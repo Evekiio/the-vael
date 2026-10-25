@@ -20,3 +20,15 @@ for (const file of ['build.mjs','content.json','styles.css','app.js','privacy.ht
 const total=(await Promise.all((await readdir(path.join(root,'dist/assets'))).map(async f=>(await stat(path.join(root,'dist/assets',f))).size))).reduce((a,b)=>a+b,0);
 assert.ok(total<2_500_000,`Image budget exceeded: ${total}`);
 console.log(`Static checks passed. Assets: ${(total/1024).toFixed(0)} KiB. No runtime dependencies.`);
+
+const data = JSON.parse(await readFile(path.join(root,'content.json'),'utf8'));
+const hero = html.match(/<section class="hero"[\s\S]*?<\/section>/)?.[0];
+assert.ok(hero, 'Hero section exists');
+assert.match(data.feature.duration, /^\d+:[0-5]\d$/, 'Featured duration uses minutes:seconds');
+assert.ok(hero.includes(`href="${data.feature.watch}"`), 'Hero reaches featured full song directly');
+assert.ok(hero.includes(`href="${data.feature.listen}"`), 'Hero offers featured Spotify alternative');
+assert.ok(hero.includes(data.feature.title), 'Hero names the complete featured song');
+assert.ok(hero.includes(`Watch Blueprints (${data.feature.duration})`), 'Named playback action includes duration');
+assert.ok(!hero.includes('href="#listen"'), 'Primary hero action does not add a scroll step');
+assert.ok(html.includes('Subscribe on YouTube for the next release'), 'Explicit follow invitation exists');
+console.log('First-listen route checks passed.');

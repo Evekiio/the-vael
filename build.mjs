@@ -10,6 +10,8 @@ const external = (url) => {
   if (parsed.protocol !== 'https:') throw new Error(`HTTPS link required: ${url}`);
   return escape(parsed.href);
 };
+const youtube = data.socials.find(s => s.label === 'YouTube');
+if (!youtube) throw new Error('YouTube channel required for follow action');
 const arrow = '<span class="arrow" aria-hidden="true">↗</span>';
 const play = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 11 7-11 7z" fill="currentColor"/></svg>';
 const icons = {
@@ -64,7 +66,7 @@ const html = `<!doctype html>
       <p class="eyebrow"><span class="small-diamond" aria-hidden="true"></span> The official listening room</p>
       <h1 id="hero-title">Heavy sound.<br>Soulful vocals.<br><em>A mind of its own.</em></h1>
       <p class="hero-description">Melodic metalcore meets conscious hip-hop.<br>Dark humor. Human contradictions. Joy in the cracks.</p>
-      <a class="button gold" href="#listen">Find your first song <span aria-hidden="true">↓</span></a>
+      <div class="hero-listen"><p class="hero-song">Start here: ${escape(data.feature.title)}</p><div class="hero-actions"><a class="button gold" href="${external(data.feature.watch)}" aria-label="Watch ${escape(data.feature.title)} on YouTube (${escape(data.feature.duration)})">${play} Watch Blueprints (${escape(data.feature.duration)})</a><a class="text-link" href="${external(data.feature.listen)}">Listen on Spotify ${arrow}</a></div></div>
       <div class="hero-note"><span class="line" aria-hidden="true"></span><span>Music & a world to get lost in.</span></div>
     </div>
     <div class="hero-caption" aria-hidden="true">Light. Shadow. Room for both.</div>
@@ -75,7 +77,7 @@ const html = `<!doctype html>
     <div class="listening-grid">
       <article class="feature-card">
         <a class="feature-image" href="${external(data.feature.watch)}" aria-label="Watch ${escape(data.feature.title)} on YouTube"><img src="${escape(data.feature.image)}" alt="${escape(data.feature.alt)}" width="1280" height="720" loading="lazy"><span class="play-disc">${play}</span><span class="image-label">Full song / Official visualizer</span></a>
-        <div class="feature-copy"><p class="eyebrow">Your first listen</p><h3>${escape(data.feature.title)}</h3><p>${escape(data.feature.description)}</p><div class="feature-actions"><a class="button gold" href="${external(data.feature.watch)}">${play} Watch the full song</a><a class="text-link" href="${external(data.feature.listen)}">Listen on Spotify ${arrow}</a></div></div>
+        <div class="feature-copy"><p class="eyebrow">Your first listen</p><h3>${escape(data.feature.title)}</h3><p>${escape(data.feature.description)}</p><div class="feature-actions"><a class="button gold" href="${external(data.feature.watch)}">${play} Watch the full song</a><a class="text-link" href="${external(data.feature.listen)}">Listen on Spotify ${arrow}</a></div><a class="text-link follow-link" href="${external(youtube.url)}">Subscribe on YouTube for the next release ${arrow}</a></div>
       </article>
       <article class="album-panel"><p class="eyebrow">Stay for the album</p><h3>${escape(data.album.title)}</h3><p class="album-description">${escape(data.album.description)}</p><div class="platform-list">${data.album.links.map(p=>`<a class="platform-link" href="${external(p.url)}">${icon(p.icon)}<span><strong>${escape(p.label)}</strong><small>${escape(p.detail)}</small></span>${arrow}</a>`).join('')}</div><p class="album-footnote">The album, on your terms.</p></article>
     </div>
