@@ -16,9 +16,15 @@ Open `http://127.0.0.1:4173/the-vael/`. Every listening link works without JavaS
 
 ## Publish
 
-The generated `dist/` directory is the complete public site. Configure GitHub Pages to deploy via GitHub Actions using the included workflow. The workflow builds, validates and uploads only `dist/`. A push to `main` deploys the site. `workflow_dispatch` supports a manual deployment. No third-party credentials are required.
+The generated `dist/` directory is the complete public site. The existing Pages configuration stays unchanged. The included workflow builds, validates and uploads only `dist/`, but **runs only when explicitly started**. Pushes and PR merges do not publish the site automatically. No third-party credentials are required.
 
-If uploading through GitHub's web UI instead, publish the **contents** of `dist/` to `main` and configure Pages to deploy from `main` and `/ (root)`.
+Use a focused feature branch, meaningful commits and a draft PR; run `npm run build` and `npm run check` locally, review the result, mark ready and merge normally. When publication is explicitly requested, start **Publish listening hub** from GitHub's Actions UI on `main`, or run:
+
+```sh
+gh workflow run pages.yml --repo Evekiio/the-vael --ref main
+```
+
+Then inspect that run and the live site before claiming publication succeeded. The current site stays live until a later successful manual publication. Do not change Pages hosting settings as part of ordinary source updates. This manually started publisher is an explicit exception to the no-automatic-Actions policy.
 
 ## Artwork and rights
 
