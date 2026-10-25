@@ -16,7 +16,7 @@ Open `http://127.0.0.1:4173/the-vael/`. Every listening link works without JavaS
 
 ## Publish
 
-The committed `dist/` directory is the complete public site. Configure GitHub Pages to deploy via GitHub Actions using the included workflow. The workflow builds, validates and uploads only `dist/`. A push to `main` deploys the site. `workflow_dispatch` supports a manual deployment. No third-party credentials are required.
+The generated `dist/` directory is the complete public site. Configure GitHub Pages to deploy via GitHub Actions using the included workflow. The workflow builds, validates and uploads only `dist/`. A push to `main` deploys the site. `workflow_dispatch` supports a manual deployment. No third-party credentials are required.
 
 If uploading through GitHub's web UI instead, publish the **contents** of `dist/` to `main` and configure Pages to deploy from `main` and `/ (root)`.
 
