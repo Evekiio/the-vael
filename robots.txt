@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://evekiio.github.io/the-vael/sitemap.xml

@@ -1,0 +1,36 @@
+{
+  "name": "The Vael",
+  "url": "https://evekiio.github.io/the-vael/",
+  "description": "Melodic metalcore. Soulful vocals. Conscious hip-hop. Full songs, cinematic visualizers and official listening links from The Vael.",
+  "feature": {
+    "title": "Blueprints in the Unseen Hours",
+    "description": "The work nobody sees. The world it becomes.",
+    "image": "assets/blueprints.webp",
+    "alt": "Stone pathways and golden architectural outlines rise above a sea of clouds at sunset.",
+    "watch": "https://www.youtube.com/watch?v=_UsJv_xcugc",
+    "listen": "https://open.spotify.com/track/4akD3n84whnPvp0cLPjfMF"
+  },
+  "album": {
+    "title": "The Space Between Thought and Choice",
+    "description": "Ten tracks through awareness, attention and the choices we repeat. Take the whole journey, from instrumental doorway to meditation outro.",
+    "links": [
+      { "label": "Spotify", "detail": "Listen to the album", "icon": "spotify", "url": "https://open.spotify.com/album/2mRL8PBDRNqXL1m6qdgSML" },
+      { "label": "Apple Music", "detail": "Listen to the album", "icon": "music", "url": "https://music.apple.com/us/album/the-space-between-thought-and-choice/6817910008" },
+      { "label": "Amazon Music", "detail": "Listen to the album", "icon": "headphones", "url": "https://music.amazon.com/albums/B0HLM3G9CP" },
+      { "label": "YouTube", "detail": "Watch all ten visualizers", "icon": "youtube", "url": "https://www.youtube.com/playlist?list=PLarfYR8aT4mE" }
+    ]
+  },
+  "songs": [
+    { "title": "High Vibe Psycho", "label": "For the storm with a sense of humor", "image": "assets/high-vibe.webp", "alt": "Vael grins between a golden skyline and a violet electrical storm.", "url": "https://www.youtube.com/watch?v=XCac3pTc-EM" },
+    { "title": "Permission Slip", "label": "For the life you've put on hold", "image": "assets/permission-slip.webp", "alt": "Vael in an illustrated classroom, surrounded by fractured desks and warm light.", "url": "https://www.youtube.com/watch?v=yVwzlW275FY" }
+  ],
+  "socials": [
+    { "label": "YouTube", "detail": "Full videos", "url": "https://www.youtube.com/@VaelSystems" },
+    { "label": "Spotify", "detail": "The full catalog", "url": "https://open.spotify.com/artist/1chQLtfUeVY1DvYHImE1uT" },
+    { "label": "Instagram", "detail": "Art & excerpts", "url": "https://www.instagram.com/vaelsystems/" },
+    { "label": "TikTok", "detail": "Short encounters", "url": "https://www.tiktok.com/@vael_systems" },
+    { "label": "Facebook", "detail": "Songs & stories", "url": "https://www.facebook.com/vaelsystems" },
+    { "label": "Twitch", "detail": "The Vael Radio", "url": "https://www.twitch.tv/the_vael" }
+  ],
+  "contact": "vaelsystems@gmail.com"
+}
