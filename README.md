@@ -27,3 +27,7 @@ Existing The Vael artwork is reused with responsive format/size exports. The pri
 ## Validation
 
 `npm run check` verifies local resources, the project-site base path, primary heading, metadata and asset budget. Browser checks should cover desktop and narrow layouts, keyboard access, reduced motion, sharing and all destination links before a release is called verified. A build or a deployment alone does not prove audience growth.
+
+## First-listen route
+
+Blueprints in the Unseen Hours is the evergreen introduction. The hero and first-song card share destinations from `content.json`; `feature.duration` supplies the displayed runtime. The follow invitation uses the existing YouTube social destination. Preserve direct links and the no-JavaScript listening path when editing. Secondary navigation has 44-pixel minimum target height.
