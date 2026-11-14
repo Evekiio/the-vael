@@ -37,3 +37,7 @@ Existing The Vael artwork is reused with responsive format/size exports. The pri
 ## First-listen route
 
 Blueprints in the Unseen Hours is the evergreen introduction. The hero and first-song card share destinations from `content.json`; `feature.duration` supplies the displayed runtime. The follow invitation uses the existing YouTube social destination. Preserve direct links and the no-JavaScript listening path when editing. Secondary navigation has 44-pixel minimum target height.
+
+## Recent full songs
+
+The compact section immediately after the first-listen cards gives returning listeners a direct route to three recent full songs. Maintain one to three exact released titles and HTTPS video destinations in `content.json` under `recent_releases`. Keep the Blueprints starter in place and verify the destination title before changing a link. Cards use three columns on wide screens and one column below 700 pixels; no new artwork or JavaScript is required. `npm run check` also checks section order and full-video destinations. Browser layout, keyboard and destination review remain separate release checks.

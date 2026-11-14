@@ -21,6 +21,13 @@ const icons = {
   headphones: '<path d="M4 14v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="12" width="4" height="8" rx="2"/><rect x="17" y="12" width="4" height="8" rx="2"/>'
 };
 const icon = (name) => `<svg class="platform-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icons[name]}</svg>`;
+if (!Array.isArray(data.recent_releases) || data.recent_releases.length < 1 || data.recent_releases.length > 3) {
+  throw new Error('Recent releases requires one to three full-song links');
+}
+const recentLinks = data.recent_releases.map(song => {
+  if (typeof song.title !== 'string' || !song.title.trim()) throw new Error('Recent release title required');
+  return `<a href="${external(song.url)}"><span>${escape(song.title)}</span>${arrow}</a>`;
+}).join('');
 const html = `<!doctype html>
 <html lang="en">
 <head>
@@ -81,6 +88,11 @@ const html = `<!doctype html>
       </article>
       <article class="album-panel"><p class="eyebrow">Stay for the album</p><h3>${escape(data.album.title)}</h3><p class="album-description">${escape(data.album.description)}</p><div class="platform-list">${data.album.links.map(p=>`<a class="platform-link" href="${external(p.url)}">${icon(p.icon)}<span><strong>${escape(p.label)}</strong><small>${escape(p.detail)}</small></span>${arrow}</a>`).join('')}</div><p class="album-footnote">The album, on your terms.</p></article>
     </div>
+  </section>
+
+  <section id="recent" class="wrap recent-releases" aria-labelledby="recent-title">
+    <p class="eyebrow">Recent full songs</p><h2 id="recent-title">Already heard Blueprints?</h2>
+    <div class="recent-list">${recentLinks}</div>
   </section>
 
   <section id="discover" class="discover-section wrap" aria-labelledby="discover-title">
