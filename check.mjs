@@ -32,3 +32,19 @@ assert.ok(hero.includes(`Watch Blueprints (${data.feature.duration})`), 'Named p
 assert.ok(!hero.includes('href="#listen"'), 'Primary hero action does not add a scroll step');
 assert.ok(html.includes('Subscribe on YouTube for the next release'), 'Explicit follow invitation exists');
 console.log('First-listen route checks passed.');
+
+const recent = html.match(/<section id="recent"[\s\S]*?<\/section>/)?.[0];
+assert.ok(recent, 'Recent full songs section exists');
+assert.ok(html.indexOf('id="listen"') < html.indexOf('id="recent"'), 'Starter precedes recent songs');
+assert.ok(html.indexOf('id="recent"') < html.indexOf('id="discover"'), 'Recent songs precede discovery');
+assert.equal((recent.match(/<a\b/g)||[]).length, data.recent_releases.length, 'Every recent song is a direct link');
+for (const song of data.recent_releases) {
+  const url = new URL(song.url);
+  assert.equal(url.protocol, 'https:', 'Recent songs use HTTPS');
+  assert.equal(url.hostname, 'www.youtube.com', 'Recent songs reach YouTube directly');
+  assert.equal(url.pathname, '/watch', 'Recent songs reach full videos');
+  assert.match(url.searchParams.get('v') || '', /^[\w-]{11}$/, 'Recent song has a video ID');
+  assert.ok(recent.includes(song.title), 'Recent song retains its full released title');
+  assert.ok(recent.includes(`href="${song.url}"`), 'Recent destination matches content');
+}
+console.log('Recent full-song route checks passed.');
